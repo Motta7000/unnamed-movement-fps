@@ -38,11 +38,21 @@ func load_weapon() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func sway_weapon (delta) -> void:
+	if Engine.is_editor_hint():
+		return
+	var sway_random : float = get_sway_noise()
+	var sway_random_adjusted : float = sway_random * idle_sway_adjustment
+	time += delta + (sway_speed * sway_random)
+	random_sway_x = sin(time * 1.5 + sway_random_adjusted) / random_sway_amount
+	random_sway_y = sin(time - sway_random_adjusted) / random_sway_amount
+	
 	mouse_movement = mouse_movement.clamp(WEAPON_TYPE.sway_min,WEAPON_TYPE.sway_max)
 	position.x = lerp(position.x, WEAPON_TYPE.position.x - (mouse_movement.x * WEAPON_TYPE.sway_amount_position) * delta, WEAPON_TYPE.sway_speed_position)
 	position.y = lerp(position.y, WEAPON_TYPE.position.y + (mouse_movement.y * WEAPON_TYPE.sway_amount_position) * delta, WEAPON_TYPE.sway_speed_position)
-	rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
-	rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x - (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
+	#rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
+	rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation + (random_sway_y * idle_sway_rotation_strength))*delta, WEAPON_TYPE.sway_speed_rotation)
+	rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x - (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation + (random_sway_x * idle_sway_rotation_strength)) * delta, WEAPON_TYPE.sway_speed_rotation)
+	#rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x - (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
 
 func _input(event):
 	if event.is_action_pressed("weapon1"):
@@ -59,8 +69,8 @@ func _physics_process (delta: float) -> void:
 	
 func get_sway_noise() -> float:
 	var player_position : Vector3 = Vector3(0,0,0)
-	#if not Engine.is_editor_hint():
-		#player_position = Global.player.global_position
+	if not Engine.is_editor_hint():
+		player_position = GameManager.lastFramePosition
 	var noise_location : float = sway_noise.noise.get_noise_2d(player_position.x,player_position.y)
 	return noise_location
 	
