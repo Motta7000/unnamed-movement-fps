@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://wr86w2ulpo8k"]
+
+[ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Scenes/PlayerCharacterScene.tscn" id="1_nsir0"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PlayerCharacter2" type="Node3D" parent="."]
+
+[node name="PlayerCharacterV2" parent="PlayerCharacter2" instance=ExtResource("1_nsir0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5544, 1.54036, 0)

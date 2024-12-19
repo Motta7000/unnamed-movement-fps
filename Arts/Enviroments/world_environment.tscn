@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca2i6bgrvsqja"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pqbhs"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_28tac"]
+seamless = true
+noise = SubResource("FastNoiseLite_pqbhs")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jmb7"]
+sky_cover = SubResource("NoiseTexture2D_28tac")
+
+[sub_resource type="Sky" id="Sky_p10n0"]
+sky_material = SubResource("ProceduralSkyMaterial_7jmb7")
+
+[sub_resource type="Environment" id="Environment_uafnn"]
+background_mode = 2
+sky = SubResource("Sky_p10n0")
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_uafnn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.920662, 0.390362, 0, -0.390362, -0.920662, 0, 0, 0)
+shadow_enabled = true
