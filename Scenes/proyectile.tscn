@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm16cn0hqjvne"]
+
+[ext_resource type="Script" path="res://proyectile.gd" id="1_q6b5y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_puy8s"]
+radius = 0.05
+height = 0.1
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_q6b5y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0131071, -0.999914, 0, 0.999914, -0.0131071, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_puy8s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]

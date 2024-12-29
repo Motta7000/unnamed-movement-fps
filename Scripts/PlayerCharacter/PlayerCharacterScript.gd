@@ -203,6 +203,7 @@ func _input(event):
 	if event.is_pressed():
 		if(event.is_action_pressed("attack")):
 			print('you attacked')
+			WEAPON_CONTROLLER._attack()
 			#WEAPON._attack()
 			
 func displayStats():

@@ -70,7 +70,8 @@ func _input(event):
 		mouse_movement = event.relative
 		
 func _physics_process (delta: float) -> void:
-	sway_weapon(delta)
+	sway_weapon(delta,true)
+	#print('hello')
 	
 func get_sway_noise() -> float:
 	var player_position : Vector3 = Vector3(0,0,0)
@@ -80,8 +81,20 @@ func get_sway_noise() -> float:
 	return noise_location
 	
 func _attack() -> void:
-	print(GameManager.camera3D)
-	var camera = GameManager.camera3D
-	var space_state = camera.get_world_3d().direct_space_state
-	var screen_center = get_viewport().size/ 2
-	print(screen_center)
+	var camera = $"../.."  # Adjust this path to your camera
+	var screen_center = get_viewport().size / 2
+
+	# Get the camera's position and direction
+	var from = camera.global_transform.origin
+	var direction = (camera.project_ray_normal(screen_center)).normalized()
+
+	# Instance the projectile
+	var projectile_scene = preload("res://Scenes/proyectile.tscn")
+	var projectile = projectile_scene.instantiate()
+
+	# Set the position and direction of the projectile
+	projectile.global_transform.origin = from
+	projectile.direction = direction
+
+	# Add the projectile to the scene
+	get_tree().current_scene.add_child(projectile)
