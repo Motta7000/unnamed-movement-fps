@@ -64,7 +64,7 @@ func _input(event):
 		WEAPON_TYPE = load("res://Arts/Meshes/Weapons/crowbar/crowbar.tres")
 		load_weapon()
 	if event.is_action_pressed("weapon2"):
-		WEAPON_TYPE = load("res://Arts/Meshes/Weapons/crowbar2/crowbarL.tres")
+		WEAPON_TYPE = load("res://Arts/Meshes/Weapons/pistol/pistol.tres")
 		load_weapon()
 	if event is InputEventMouseMotion:
 		mouse_movement = event.relative
