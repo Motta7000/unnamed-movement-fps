@@ -19,9 +19,6 @@ height = 1.4
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ulxq6"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5sm7k"]
-width = 1920
-height = 1920
-generate_mipmaps = false
 color_ramp = SubResource("Gradient_tqmhg")
 noise = SubResource("FastNoiseLite_ulxq6")
 
@@ -72,8 +69,11 @@ jumpHeight = 3.0
 jumpTimeToPeak = 0.3
 jumpTimeToFall = 0.35
 jumpCooldown = 0.25
+jumpCooldownRef = null
 nbJumpsInAirAllowed = 1
+nbJumpsInAirAllowedRef = null
 slideTime = 1.0
+slideTimeRef = null
 timeBeforeCanSlideAgain = 0.5
 wallJumpVelocity = 3.0
 dashTime = 0.09
@@ -124,8 +124,7 @@ far = 1000.0
 [node name="Weapon" parent="CameraHolder/Camera3D/WeaponRig" instance=ExtResource("3_kgkij")]
 transform = Transform3D(-0.00823992, 0.0232633, 0.999695, 0.430446, 0.902448, -0.0174524, -0.902579, 0.430171, -0.0174497, 0.51, -0.37, -0.551)
 sway_noise = SubResource("NoiseTexture2D_5sm7k")
-sway_speed = 0.01
-reset = true
+sway_speed = 0.5
 
 [node name="CeilingCheck" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.758088, 0)

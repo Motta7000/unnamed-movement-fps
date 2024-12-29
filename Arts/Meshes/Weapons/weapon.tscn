@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b3rmqte454xlw" path="res://Arts/Meshes/Weapons/mesh_crowbar.res" id="3_7q4lk"]
 
 [node name="Weapon" type="Node3D"]
-transform = Transform3D(-0.00823993, 0.0232633, 0.999696, 0.430446, 0.902448, -0.0174524, -0.902579, 0.430171, -0.0174497, 0.147, -0.5, -0.3)
+transform = Transform3D(-0.00823992, 0.0232633, 0.999695, 0.430446, 0.902448, -0.0174524, -0.902579, 0.430171, -0.0174497, 0.51, -0.37, -0.551)
 script = ExtResource("1_a0elk")
 WEAPON_TYPE = ExtResource("2_kwbef")
 

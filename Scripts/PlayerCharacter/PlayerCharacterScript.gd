@@ -30,6 +30,7 @@ var moveDecceleration : float
 @export var runDecceleration : float 
 @export var crouchDecceleration : float 
 @export var inAirMoveSpeed : float 
+@export var WEAPON_CONTROLLER : WeaponController
 
 #movement variables
 @export_group("movement variables")
@@ -199,6 +200,11 @@ func _input(event):
 
 			states.DASH:
 				pass  # Keep as-is
+	if event.is_pressed():
+		if(event.is_action_pressed("attack")):
+			print('you attacked')
+			#WEAPON._attack()
+			
 func displayStats():
 	#call the functions in charge of displaying the controller properties
 	hud.displayCurrentState(currentState)

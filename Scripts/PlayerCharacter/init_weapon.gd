@@ -1,6 +1,6 @@
 @tool
 
-extends Node3D
+class_name WeaponController extends Node3D
 
 @export var WEAPON_TYPE : Weapons:
 	set(value):
@@ -18,7 +18,7 @@ var mouse_movement : Vector2
 var random_sway_x
 var random_sway_y
 var random_sway_amount : float
-var time : float = 0.0
+var time : float = 0.01
 var idle_sway_adjustment
 var idle_sway_rotation_strength
 
@@ -37,22 +37,27 @@ func load_weapon() -> void:
 	random_sway_amount = WEAPON_TYPE.random_sway_amount
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func sway_weapon (delta) -> void:
+func sway_weapon (delta,isIdle:bool) -> void:
 	if Engine.is_editor_hint():
 		return
-	var sway_random : float = get_sway_noise()
-	var sway_random_adjusted : float = sway_random * idle_sway_adjustment
-	time += delta + (sway_speed * sway_random)
-	random_sway_x = sin(time * 1.5 + sway_random_adjusted) / random_sway_amount
-	random_sway_y = sin(time - sway_random_adjusted) / random_sway_amount
+	if isIdle:
+		var sway_random : float = get_sway_noise()
+		var sway_random_adjusted : float = sway_random * idle_sway_adjustment
+		time += delta + (sway_speed * sway_random)
+		random_sway_x = sin(time * 1.5 + sway_random_adjusted) / random_sway_amount
+		random_sway_y = sin(time - sway_random_adjusted) / random_sway_amount
 	
-	mouse_movement = mouse_movement.clamp(WEAPON_TYPE.sway_min,WEAPON_TYPE.sway_max)
-	position.x = lerp(position.x, WEAPON_TYPE.position.x - (mouse_movement.x * WEAPON_TYPE.sway_amount_position) * delta, WEAPON_TYPE.sway_speed_position)
-	position.y = lerp(position.y, WEAPON_TYPE.position.y + (mouse_movement.y * WEAPON_TYPE.sway_amount_position) * delta, WEAPON_TYPE.sway_speed_position)
-	#rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
-	rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation + (random_sway_y * idle_sway_rotation_strength))*delta, WEAPON_TYPE.sway_speed_rotation)
-	rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x - (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation + (random_sway_x * idle_sway_rotation_strength)) * delta, WEAPON_TYPE.sway_speed_rotation)
-	#rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x - (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
+		mouse_movement = mouse_movement.clamp(WEAPON_TYPE.sway_min,WEAPON_TYPE.sway_max)
+		position.x = lerp(position.x, WEAPON_TYPE.position.x - (mouse_movement.x * WEAPON_TYPE.sway_amount_position + random_sway_x) * delta, WEAPON_TYPE.sway_speed_position)
+		position.y = lerp(position.y, WEAPON_TYPE.position.y + (mouse_movement.y * WEAPON_TYPE.sway_amount_position + random_sway_y ) * delta, WEAPON_TYPE.sway_speed_position)
+		rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation + (random_sway_y * idle_sway_rotation_strength))*delta, WEAPON_TYPE.sway_speed_rotation)
+		rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x - (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation + (random_sway_x * idle_sway_rotation_strength)) * delta, WEAPON_TYPE.sway_speed_rotation)
+	else:
+		mouse_movement = mouse_movement.clamp(WEAPON_TYPE.sway_min,WEAPON_TYPE.sway_max)
+		position.x = lerp(position.x, WEAPON_TYPE.position.x - (mouse_movement.x * WEAPON_TYPE.sway_amount_position) * delta, WEAPON_TYPE.sway_speed_position)
+		position.y = lerp(position.y, WEAPON_TYPE.position.y + (mouse_movement.y * WEAPON_TYPE.sway_amount_position) * delta, WEAPON_TYPE.sway_speed_position)
+		rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation) *delta, WEAPON_TYPE.sway_speed_rotation)
+		rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x - (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation)  * delta, WEAPON_TYPE.sway_speed_rotation)
 
 func _input(event):
 	if event.is_action_pressed("weapon1"):
@@ -74,3 +79,9 @@ func get_sway_noise() -> float:
 	var noise_location : float = sway_noise.noise.get_noise_2d(player_position.x,player_position.y)
 	return noise_location
 	
+func _attack() -> void:
+	print(GameManager.camera3D)
+	var camera = GameManager.camera3D
+	var space_state = camera.get_world_3d().direct_space_state
+	var screen_center = get_viewport().size/ 2
+	print(screen_center)
