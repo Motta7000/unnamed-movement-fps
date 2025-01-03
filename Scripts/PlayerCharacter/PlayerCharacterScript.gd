@@ -94,7 +94,7 @@ var velocityPreDash : Vector3
 func _ready():
 	#set the start move speed
 	var gravity_scale = 2
-	jumpVelocity = (4.0 * jumpHeight) / (jumpTimeToPeak * gravity_scale)
+	jumpVelocity = (6.0 * jumpHeight) / (jumpTimeToPeak * gravity_scale)
 	jumpGravity = (-2.0 * jumpHeight) / ((jumpTimeToPeak ** 2) * gravity_scale)
 	fallGravity = (-2.0 * jumpHeight) / ((jumpTimeToFall ** 2) * gravity_scale)
 	moveSpeed = walkSpeed
@@ -515,7 +515,7 @@ func wallrunStateChanges():
 	#condition here, the state is changed only if the character speed is greater than the walk speed
 	if velocity.length() > walkSpeed and currentState != states.DASH and currentState != states.CROUCH and canWallRun: 
 		currentState = states.ONWALL
-		velocity.y *= wallGravityMultiplier #gravity value became onwall one
+		velocity.y *= wallGravityMultiplier * 1.2 #gravity value became onwall one
 		
 		if nbJumpsInAirAllowed != nbJumpsInAirAllowedRef: nbJumpsInAirAllowed = nbJumpsInAirAllowedRef
 		
