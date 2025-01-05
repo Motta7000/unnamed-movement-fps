@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Godot Advanced FPS Controller Plugin Project"
 run/main_scene="res://Scenes/Level 1.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 run/max_fps=200
 config/icon="res://Arts/TemplateImages/Icon.png"
 
@@ -22,7 +22,6 @@ GameManager="*res://Scripts/PlayerCharacter/GameManager.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/aspect="ignore"
 window/vsync/vsync_mode=0
 
