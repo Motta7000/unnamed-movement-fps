@@ -18,7 +18,12 @@ public partial class PistolEnemy : Node3D
 		// Get references to nodes
 		_gunBarrel = GetNode<Node3D>("GunBarrel");
 		_shootTimer = GetNode<Timer>("ShootTimer");
-
+		var players = GetTree().GetNodesInGroup("player");
+		if (players.Count > 0)
+		{
+			_player = players[0] as Node3D;
+			GD.Print("Player found via group.");
+		}
 		// Attempt to locate the player
 		if (!string.IsNullOrEmpty(PlayerPath))
 		{
@@ -46,7 +51,7 @@ public partial class PistolEnemy : Node3D
 	private void Shoot()
 	{
 		GD.Print("Enemy shot a bullet");
-		if (ProjectileScene == null || _player == null)
+		if ( _player == null)
 		{
 			GD.PrintErr("ProjectileScene not set or Player not found.");
 			return;

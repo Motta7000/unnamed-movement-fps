@@ -94,7 +94,7 @@ var velocityPreDash : Vector3
 func _ready():
 	#set the start move speed
 	var gravity_scale = 2
-	jumpVelocity = (6.0 * jumpHeight) / (jumpTimeToPeak * gravity_scale)
+	jumpVelocity = (4.0 * jumpHeight) / (jumpTimeToPeak * gravity_scale)
 	jumpGravity = (-2.0 * jumpHeight) / ((jumpTimeToPeak ** 2) * gravity_scale)
 	fallGravity = (-2.0 * jumpHeight) / ((jumpTimeToFall ** 2) * gravity_scale)
 	moveSpeed = walkSpeed

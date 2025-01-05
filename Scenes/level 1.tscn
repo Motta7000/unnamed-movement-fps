@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5662, 11.7931, 109.982)
 [node name="WalkableWalls" type="Node3D" parent="Map"]
 
 [node name="WalkableWall" type="CSGBox3D" parent="Map/WalkableWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.4096, -0.936076, 131.061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5583, -9.53629, 127.271)
 material_override = SubResource("StandardMaterial3D_h3yst")
 use_collision = true
 collision_layer = 5
@@ -105,14 +105,6 @@ use_collision = true
 collision_layer = 5
 collision_mask = 2
 size = Vector3(62.4346, 78.0199, 0)
-
-[node name="WalkableWall2" type="CSGBox3D" parent="Map/WalkableWalls/WalkableWall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -215.125, -175.094, 10.881)
-material_override = SubResource("StandardMaterial3D_h3yst")
-use_collision = true
-collision_layer = 5
-collision_mask = 2
-size = Vector3(899.025, 153.839, 577.359)
 
 [node name="WalkableWall7" type="CSGBox3D" parent="Map/WalkableWalls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.615, 3.19013, 96.318)
@@ -170,14 +162,28 @@ jumpBoostValue = 34.0
 collision_mask = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6773, -5.56546, 115.798)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6406, -5.56546, 108.738)
 use_collision = true
 collision_mask = 2
-size = Vector3(37.2241, 1, 41.2941)
+size = Vector3(35.1506, 1, 18)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="PistolEnemy" parent="." instance=ExtResource("5_y2cgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7926, -0.336432, 126.186)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6406, -0.510345, 90.7384)
+use_collision = true
+collision_mask = 2
+size = Vector3(35.1506, 11.1102, 18)
+material = SubResource("StandardMaterial3D_octi2")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.6406, -0.56546, 108.738)
+use_collision = true
+collision_mask = 2
+size = Vector3(35.1506, 11, 18)
+material = SubResource("StandardMaterial3D_octi2")
 
 [connection signal="area_entered" from="Map/Jumppads/Jumppad/Area3D" to="Map/Jumppads/Jumppad" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="Map/Jumppads/Jumppad2/Area3D" to="Map/Jumppads/Jumppad2" method="_on_area_3d_area_entered"]

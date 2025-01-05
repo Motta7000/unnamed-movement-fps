@@ -7,7 +7,7 @@ class_name HUD
 @onready var currentStateLabelText = $HBoxContainer/VBoxContainer2/CurrentStateLabelText
 @onready var moveSpeedLabelText = $HBoxContainer/VBoxContainer2/MoveSpeedLabelText
 @onready var desiredMoveSpeedLabelText = $HBoxContainer/VBoxContainer2/DesiredMoveSpeedLabelText
-@onready var velocityLabelText = $HBoxContainer/VBoxContainer2/VelocityLabelText
+@onready var velocityLabelText = $VelocityLabelText
 @onready var framesPerSecondLabelText = $HBoxContainer/VBoxContainer2/FramesPerSecondLabelText
 @onready var nbJumpsAllowedInAirLabelText = $HBoxContainer/VBoxContainer2/NbJumpsInAirLabelText
 @onready var speedLinesContainer = $SpeedLinesContrainer
@@ -52,7 +52,7 @@ func displayDesiredMoveSpeed(desiredMoveSpeed):
 	
 func displayVelocity(velocity):
 	#this function manage the current velocity displayment
-	velocityLabelText.set_text(str(velocity))
+	velocityLabelText.set_text(str(int(velocity)))
 	
 func displayNbJumpsAllowedInAir(nbJumpsAllowedInAir):
 	#this function manage the nb jumps allowed left displayment

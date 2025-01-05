@@ -33,6 +33,10 @@ project/assembly_name="Godot Advanced FPS Controller Plugin Project"
 
 enabled=PackedStringArray()
 
+[global_group]
+
+player=""
+
 [input]
 
 moveLeft={

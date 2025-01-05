@@ -47,16 +47,16 @@ shader_parameter/mask_edge = 0.8
 shader_parameter/animation_speed = 20.0
 shader_parameter/noise = SubResource("NoiseTexture2D_78nux")
 
-[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WEAPON_CONTROLLER") groups=["PlayerCharacter"]]
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WEAPON_CONTROLLER") groups=["PlayerCharacter", "player"]]
 collision_layer = 2
 floor_block_on_wall = false
 floor_max_angle = 1.309
 floor_snap_length = 0.0
 platform_floor_layers = 4294901761
 script = ExtResource("1_5dbx1")
-maxSpeed = 50.0
-walkSpeed = 11.0
-runSpeed = 20.0
+maxSpeed = 25.0
+walkSpeed = 9.0
+runSpeed = 13.0
 crouchSpeed = 7.0
 slideSpeedAddon = 8.0
 dashSpeed = 120.0
@@ -208,81 +208,80 @@ script = ExtResource("5_jgfg0")
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 
+[node name="FramesPerSecondLabel" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "FPS
+"
+
 [node name="CurrentStateLabel" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Current state : "
 
 [node name="MoveSpeedLabel" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Move speed : "
 
 [node name="DesiredMoveSpeedLabel" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Desired move speed : "
-
-[node name="VelocityLabel" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Velocity : 
-"
-
-[node name="FramesPerSecondLabel" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Frames per seconds : "
 
 [node name="NbJumpsInAirLabel" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Number jumps allowed in air : "
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 
+[node name="FramesPerSecondLabelText" type="Label" parent="HUD/HBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "..................."
+
 [node name="CurrentStateLabelText" type="Label" parent="HUD/HBoxContainer/VBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "..................."
 
 [node name="MoveSpeedLabelText" type="Label" parent="HUD/HBoxContainer/VBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "..................."
 
 [node name="DesiredMoveSpeedLabelText" type="Label" parent="HUD/HBoxContainer/VBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "..................."
-
-[node name="VelocityLabelText" type="Label" parent="HUD/HBoxContainer/VBoxContainer2"]
-texture_filter = 1
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "..................."
-
-[node name="FramesPerSecondLabelText" type="Label" parent="HUD/HBoxContainer/VBoxContainer2"]
-texture_filter = 1
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "..................."
 
 [node name="NbJumpsInAirLabelText" type="Label" parent="HUD/HBoxContainer/VBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "..................."
+
+[node name="VelocityLabelText" type="Label" parent="HUD"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 493.0
+offset_top = 518.0
+offset_right = 650.0
+offset_bottom = 560.0
+theme_override_font_sizes/font_size = 30
+text = "..................."
+horizontal_alignment = 1
 
 [node name="WeaponViewport" type="SubViewport" parent="."]
 
