@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjvftuxpxlcm6"]
+[gd_scene load_steps=6 format=3 uid="uid://cjvftuxpxlcm6"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/PistolEnemy.cs" id="1_l85fv"]
 [ext_resource type="PackedScene" uid="uid://dm16cn0hqjvne" path="res://Scenes/proyectile.tscn" id="2_q870s"]
@@ -8,6 +8,8 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ppa7i"]
 material = SubResource("StandardMaterial3D_2j6s1")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bv0w"]
 
 [node name="PistolEnemy" type="Node3D"]
 script = ExtResource("1_l85fv")
@@ -20,5 +22,12 @@ mesh = SubResource("CapsuleMesh_ppa7i")
 autostart = true
 
 [node name="GunBarrel" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="standingHitbox2" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_8bv0w")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

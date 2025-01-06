@@ -199,10 +199,12 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
-layout_mode = 0
-offset_left = 7.0
-offset_right = 811.0
-offset_bottom = 350.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_jgfg0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer"]
@@ -274,14 +276,22 @@ text = "..................."
 
 [node name="VelocityLabelText" type="Label" parent="HUD"]
 texture_filter = 1
-layout_mode = 2
-offset_left = 493.0
-offset_top = 518.0
-offset_right = 650.0
-offset_bottom = 560.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.5
+offset_top = -129.0
+offset_right = 78.5
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "..................."
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WeaponViewport" type="SubViewport" parent="."]
 

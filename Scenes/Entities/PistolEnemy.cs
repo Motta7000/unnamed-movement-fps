@@ -7,37 +7,45 @@ public partial class PistolEnemy : Node3D
 	[Export] public PackedScene ProjectileScene; // Reference to the projectile scene
 	[Export] public float ProjectileSpeed = 50.0f; // Speed of the projectiles
 	[Export] public NodePath PlayerPath; // Path to the player node
+	[Export] public int MaxHealth = 100; // Enemy's maximum health
 
 	private Node3D _gunBarrel; // Position where projectiles spawn
 	private Timer _shootTimer; // Timer to control shooting
 	private Node3D _player; // Reference to the player
+	private int _currentHealth; // Enemy's current health
 
-	public override void _Ready()
+public override void _Ready()
+{
+	GD.Print("Executing _Ready() PistolEnemy");
+
+	// Initialize health
+	_currentHealth = 1;
+
+	// Get references to nodes
+	_gunBarrel = GetNode<Node3D>("GunBarrel");
+	_shootTimer = GetNode<Timer>("ShootTimer");
+	var players = GetTree().GetNodesInGroup("player");
+	if (players.Count > 0)
 	{
-		GD.Print("Executing _Ready() PistolEnemy");
-		// Get references to nodes
-		_gunBarrel = GetNode<Node3D>("GunBarrel");
-		_shootTimer = GetNode<Timer>("ShootTimer");
-		var players = GetTree().GetNodesInGroup("player");
-		if (players.Count > 0)
-		{
-			_player = players[0] as Node3D;
-			GD.Print("Player found via group.");
-		}
-		// Attempt to locate the player
-		if (!string.IsNullOrEmpty(PlayerPath))
-		{
-			_player = GetNode<Node3D>(PlayerPath);
-		}
-
-		// Enable processing
-		SetProcess(true);
-
-		// Set up the timer for shooting
-		_shootTimer.WaitTime = ShootingInterval;
-		_shootTimer.Autostart = true;
-		_shootTimer.Timeout += Shoot; // Connect the timer timeout to the shoot function
+		_player = players[0] as Node3D;
+		GD.Print("Player found via group.");
 	}
+
+	// Attempt to locate the player
+	if (!string.IsNullOrEmpty(PlayerPath))
+	{
+		_player = GetNode<Node3D>(PlayerPath);
+	}
+
+	// Enable processing
+	SetPhysicsProcess(false); // For physics-related processing
+	SetProcess(true); // For regular frame updates
+
+	// Set up the timer for shooting
+	_shootTimer.WaitTime = ShootingInterval;
+	_shootTimer.Autostart = true;
+	_shootTimer.Timeout += Shoot; // Connect the timer timeout to the shoot function
+}
 
 	public void Process(float delta)
 	{
@@ -51,7 +59,7 @@ public partial class PistolEnemy : Node3D
 	private void Shoot()
 	{
 		GD.Print("Enemy shot a bullet");
-		if ( _player == null)
+		if (ProjectileScene == null || _player == null)
 		{
 			GD.PrintErr("ProjectileScene not set or Player not found.");
 			return;
@@ -73,5 +81,23 @@ public partial class PistolEnemy : Node3D
 			// Set the projectile's velocity
 			projectile.LinearVelocity = direction * ProjectileSpeed;
 		}
+	}
+
+	public void TakeDamage(int amount)
+	{
+		_currentHealth -= amount;
+		GD.Print($"Enemy took {amount} damage. Current health: {_currentHealth}");
+
+		if (_currentHealth <= 0)
+		{
+			Die();
+		}
+	}
+
+	private void Die()
+	{
+		GD.Print("Enemy is dead!");
+		// Add death effects, e.g., explosion, sound, etc.
+		QueueFree(); // Remove the enemy from the scene
 	}
 }

@@ -22,7 +22,6 @@ autostart = true
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(-0.999912, -0.013299, 0, 0.013299, -0.999912, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 3855
-hit_from_inside = true
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 

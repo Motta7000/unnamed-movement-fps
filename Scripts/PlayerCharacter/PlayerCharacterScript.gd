@@ -31,6 +31,7 @@ var moveDecceleration : float
 @export var crouchDecceleration : float 
 @export var inAirMoveSpeed : float 
 @export var WEAPON_CONTROLLER : WeaponController
+var health: int = 1
 
 #movement variables
 @export_group("movement variables")
@@ -205,6 +206,18 @@ func _input(event):
 			WEAPON_CONTROLLER._attack()
 			#WEAPON._attack()
 			
+func TakeDamage(damage: int) -> void:
+		health -= damage
+		print("Player took damage:", damage, "Remaining health:", health)
+		if health <= 0:
+			Die()
+
+func Die() -> void:
+	print("Player has died")
+	var current_scene = get_tree().current_scene
+	get_tree().reload_current_scene()
+	queue_free()  # Or trigger a respawn/animation/etc.
+	
 func displayStats():
 	#call the functions in charge of displaying the controller properties
 	hud.displayCurrentState(currentState)

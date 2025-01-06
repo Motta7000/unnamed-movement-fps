@@ -9,6 +9,8 @@ height = 0.1
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_mask = 65535
 script = ExtResource("1_q6b5y")
+speed = null
+damage = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0131071, -0.999914, 0, 0.999914, -0.0131071, 0, 0, 0, 1, 0, 0, 0)
