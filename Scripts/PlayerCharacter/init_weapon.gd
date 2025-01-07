@@ -81,19 +81,22 @@ func get_sway_noise() -> float:
 	return noise_location
 	
 func _attack() -> void:
-	var camera = $"../.."  # Adjust this path to your camera
+	var camera = $"../.."  # Adjust this path to your camera node
 	var screen_center = get_viewport().size / 2
 
 	# Get the camera's position and direction
 	var from = camera.global_transform.origin
-	var direction = (camera.project_ray_normal(screen_center)).normalized()
+	var direction = camera.project_ray_normal(screen_center).normalized()
+
+	# Adjust the spawn position slightly forward from the camera
+	var spawn_position = from + direction * 1.5  # Adjust the multiplier to control spawn distance
 
 	# Instance the projectile
 	var projectile_scene = preload("res://Scenes/proyectile.tscn")
 	var projectile = projectile_scene.instantiate()
 
 	# Set the position and direction of the projectile
-	projectile.global_transform.origin = from
+	projectile.global_transform.origin = spawn_position
 	projectile.direction = direction
 
 	# Add the projectile to the scene
