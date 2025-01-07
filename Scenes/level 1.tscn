@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://oj3blpxqf1bl"]
+[gd_scene load_steps=26 format=3 uid="uid://oj3blpxqf1bl"]
 
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Scenes/PlayerCharacterScene.tscn" id="1_tvhlt"]
 [ext_resource type="Texture2D" uid="uid://cosanfwg57e4y" path="res://Arts/Textures/kenney_prototype_textures/orange/texture_03.png" id="2_v37ox"]
-[ext_resource type="Texture2D" uid="uid://c3wt61i40kd0n" path="res://Arts/Textures/kenney_prototype_textures/dark/texture_03.png" id="3_lilqa"]
+[ext_resource type="Texture2D" uid="uid://daq3d5pc7e2vt" path="res://Arts/Textures/kenney_prototype_textures/dark/texture_01.png" id="4_1dpaj"]
 [ext_resource type="Script" path="res://Scripts/Others/JumppadScript.gd" id="4_nyumb"]
 [ext_resource type="PackedScene" uid="uid://cjvftuxpxlcm6" path="res://Scenes/Entities/PistolEnemy.tscn" id="5_y2cgy"]
+[ext_resource type="Texture2D" uid="uid://bnslqr588f3vm" path="res://Arts/Textures/kenney_prototype_textures/light/texture_01.png" id="5_yusv5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,17 +37,50 @@ albedo_color = Color(0.12549, 0.568627, 1, 1)
 height = 0.15
 radius = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km2eu"]
+albedo_texture = ExtResource("4_1dpaj")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_octi2"]
-albedo_texture = ExtResource("3_lilqa")
+albedo_texture = ExtResource("5_yusv5")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrlcx"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31o2k"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1fyc"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugai1"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy5qr"]
+albedo_texture = ExtResource("4_1dpaj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8fow"]
 transparency = 1
 blend_mode = 1
 albedo_color = Color(1, 1, 1, 0.282353)
 refraction_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieyl8"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sir3p"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4xot"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uprat"]
+albedo_texture = ExtResource("4_1dpaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg04g"]
+albedo_texture = ExtResource("4_1dpaj")
 
 [node name="Level3" type="Node3D"]
 
@@ -56,7 +90,7 @@ refraction_enabled = true
 environment = SubResource("Environment_pyxgo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, -0.353555, 0.883881, 0.306189, -0.353556, 0.176777, -0.918558, 0, 0, 0)
 shadow_enabled = true
 
 [node name="PlayerCharacter" type="Node3D" parent="."]
@@ -69,12 +103,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5662, -3.2069, 109.982)
 [node name="WalkableWalls" type="Node3D" parent="Map"]
 
 [node name="WalkableWall" type="CSGBox3D" parent="Map/WalkableWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5583, -9.53629, 127.271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.894, -0.11439, 118.171)
 material_override = SubResource("StandardMaterial3D_h3yst")
 use_collision = true
 collision_layer = 5
 collision_mask = 2
-size = Vector3(71.9658, 58.8438, 0)
+size = Vector3(68.3057, 10, 1)
 
 [node name="WalkableWall4" type="CSGBox3D" parent="Map/WalkableWalls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.181, -42.4588, 160.469)
@@ -109,7 +143,7 @@ collision_mask = 2
 size = Vector3(90.022, 87.1772, 0)
 
 [node name="WalkableWall2" type="CSGBox3D" parent="Map/WalkableWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.6261, 1.88637, 103.587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.6261, 1.88637, 58.587)
 material_override = SubResource("StandardMaterial3D_h3yst")
 use_collision = true
 collision_layer = 5
@@ -172,14 +206,24 @@ jumpBoostValue = 34.0
 collision_mask = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6406, -5.56546, 108.728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7159, -5.56546, 108.728)
+material_override = SubResource("StandardMaterial3D_km2eu")
 use_collision = true
 collision_mask = 2
-size = Vector3(35.1506, 1, 20)
+size = Vector3(35, 1, 20)
+material = SubResource("StandardMaterial3D_octi2")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4595, -5.56546, 108.728)
+material_override = SubResource("StandardMaterial3D_km2eu")
+use_collision = true
+collision_mask = 2
+size = Vector3(22, 1, 20)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6406, 5.43454, 108.738)
+material_override = SubResource("StandardMaterial3D_nrlcx")
 use_collision = true
 collision_mask = 2
 size = Vector3(35.1506, 1, 20)
@@ -190,6 +234,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7926, -2.33643, 113.186)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7159, -0.0654449, 99.2384)
+material_override = SubResource("StandardMaterial3D_31o2k")
 use_collision = true
 collision_mask = 2
 size = Vector3(15, 10, 1)
@@ -197,6 +242,7 @@ material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2159, 0.044755, 99.2384)
+material_override = SubResource("StandardMaterial3D_v1fyc")
 use_collision = true
 collision_mask = 2
 size = Vector3(12, 10, 1)
@@ -204,6 +250,7 @@ material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2159, 4.04475, 99.2384)
+material_override = SubResource("StandardMaterial3D_ugai1")
 use_collision = true
 collision_mask = 2
 size = Vector3(8, 2, 1)
@@ -211,6 +258,7 @@ material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2159, -3.95525, 99.2384)
+material_override = SubResource("StandardMaterial3D_fy5qr")
 use_collision = true
 collision_mask = 2
 size = Vector3(8, 2, 1)
@@ -225,6 +273,7 @@ material = SubResource("StandardMaterial3D_s8fow")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7159, -0.0654449, 118.238)
+material_override = SubResource("StandardMaterial3D_ieyl8")
 use_collision = true
 collision_mask = 2
 size = Vector3(15, 10, 1)
@@ -232,6 +281,7 @@ material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2159, 0.044755, 118.238)
+material_override = SubResource("StandardMaterial3D_sir3p")
 use_collision = true
 collision_mask = 2
 size = Vector3(12, 10, 1)
@@ -239,6 +289,7 @@ material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2159, 4.04475, 118.238)
+material_override = SubResource("StandardMaterial3D_h4xot")
 use_collision = true
 collision_mask = 2
 size = Vector3(8, 2, 1)
@@ -246,6 +297,7 @@ material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2159, -3.95525, 118.238)
+material_override = SubResource("StandardMaterial3D_uprat")
 use_collision = true
 collision_mask = 2
 size = Vector3(8, 2, 1)
@@ -259,10 +311,11 @@ size = Vector3(8, 6, 1)
 material = SubResource("StandardMaterial3D_s8fow")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5653, -0.56546, 108.738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5653, -0.06546, 109.238)
+material_override = SubResource("StandardMaterial3D_rg04g")
 use_collision = true
 collision_mask = 2
-size = Vector3(1, 11, 18)
+size = Vector3(1, 12, 19)
 material = SubResource("StandardMaterial3D_octi2")
 
 [connection signal="area_entered" from="Map/Jumppads/Jumppad/Area3D" to="Map/Jumppads/Jumppad" method="_on_area_3d_area_entered"]
