@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://oj3blpxqf1bl"]
+[gd_scene load_steps=23 format=3 uid="uid://oj3blpxqf1bl"]
 
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Scenes/PlayerCharacterScene.tscn" id="1_tvhlt"]
 [ext_resource type="Texture2D" uid="uid://cosanfwg57e4y" path="res://Arts/Textures/kenney_prototype_textures/orange/texture_03.png" id="2_v37ox"]
@@ -6,23 +6,6 @@
 [ext_resource type="Script" path="res://Scripts/Others/JumppadScript.gd" id="4_nyumb"]
 [ext_resource type="PackedScene" uid="uid://cjvftuxpxlcm6" path="res://Scenes/Entities/PistolEnemy.tscn" id="5_y2cgy"]
 [ext_resource type="Texture2D" uid="uid://bnslqr588f3vm" path="res://Arts/Textures/kenney_prototype_textures/light/texture_01.png" id="5_yusv5"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_iebnq"]
-sky_material = SubResource("ProceduralSkyMaterial_fjbi6")
-
-[sub_resource type="Environment" id="Environment_pyxgo"]
-background_mode = 2
-sky = SubResource("Sky_iebnq")
-tonemap_mode = 2
-glow_enabled = true
-fog_mode = 1
-fog_density = 1.0
-fog_depth_begin = 0.0
-fog_depth_end = 354.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3yst"]
 albedo_texture = ExtResource("2_v37ox")
@@ -83,15 +66,6 @@ albedo_texture = ExtResource("4_1dpaj")
 albedo_texture = ExtResource("4_1dpaj")
 
 [node name="Level3" type="Node3D"]
-
-[node name="Environment" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_pyxgo")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, -0.353555, 0.883881, 0.306189, -0.353556, 0.176777, -0.918558, 0, 0, 0)
-shadow_enabled = true
 
 [node name="PlayerCharacter" type="Node3D" parent="."]
 
@@ -206,11 +180,11 @@ jumpBoostValue = 34.0
 collision_mask = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7159, -5.56546, 108.728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2159, -5.56546, 108.728)
 material_override = SubResource("StandardMaterial3D_km2eu")
 use_collision = true
 collision_mask = 2
-size = Vector3(35, 1, 20)
+size = Vector3(36, 1, 20)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="."]
@@ -222,22 +196,22 @@ size = Vector3(22, 1, 20)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6406, 5.43454, 108.738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0653, 5.43454, 108.738)
 material_override = SubResource("StandardMaterial3D_nrlcx")
 use_collision = true
 collision_mask = 2
-size = Vector3(35.1506, 1, 20)
+size = Vector3(36, 1, 20)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="PistolEnemy" parent="." instance=ExtResource("5_y2cgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7926, -2.33643, 113.186)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7159, -0.0654449, 99.2384)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2159, -0.0654449, 99.2384)
 material_override = SubResource("StandardMaterial3D_31o2k")
 use_collision = true
 collision_mask = 2
-size = Vector3(15, 10, 1)
+size = Vector3(16, 10, 1)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
@@ -315,7 +289,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5653, -0.06546, 109.238)
 material_override = SubResource("StandardMaterial3D_rg04g")
 use_collision = true
 collision_mask = 2
-size = Vector3(1, 12, 19)
+size = Vector3(1, 10, 19)
 material = SubResource("StandardMaterial3D_octi2")
 
 [connection signal="area_entered" from="Map/Jumppads/Jumppad/Area3D" to="Map/Jumppads/Jumppad" method="_on_area_3d_area_entered"]
