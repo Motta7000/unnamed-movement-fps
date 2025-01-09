@@ -19,3 +19,4 @@ class_name Weapons extends Resource
 @export var mesh : Mesh
 @export var shadow : bool
 @export var damage_amount : float
+@export var fire_rate : float = 1

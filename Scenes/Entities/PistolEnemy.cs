@@ -13,11 +13,11 @@ public partial class PistolEnemy : Node3D
 	private Timer _shootTimer; // Timer to control shooting
 	private Node3D _player; // Reference to the player
 	private int _currentHealth; // Enemy's current health
-
+	private Node gameManager;
 public override void _Ready()
 {
 	GD.Print("Executing _Ready() PistolEnemy");
-
+	gameManager = GetNode("/root/GameManager");
 	// Initialize health
 	_currentHealth = 1;
 
@@ -95,6 +95,7 @@ public override void _Ready()
 	private void Die()
 	{
 		GD.Print("Enemy is dead!");
+		gameManager.Call("enemy_game_ended");
 		// Add death effects, e.g., explosion, sound, etc.
 		QueueFree(); // Remove the enemy from the scene
 	}

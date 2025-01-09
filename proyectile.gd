@@ -66,8 +66,8 @@ func _process(delta) -> void:
 
 	# Update the last position to the current position
 		last_position = global_transform.origin
-	else:
-		print("No vertex data in mesh")
+	#else:
+		#print("No vertex data in mesh")
 
 	if ray.is_colliding() and !timerOn:
 		var collider = ray.get_collider()  # Get the node hit by the ray

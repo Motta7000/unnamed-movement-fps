@@ -21,6 +21,7 @@ var random_sway_amount : float
 var time : float = 0.01
 var idle_sway_adjustment
 var idle_sway_rotation_strength
+var can_shoot = true
 
 func _ready() -> void:
 	load_weapon()
@@ -81,6 +82,9 @@ func get_sway_noise() -> float:
 	return noise_location
 	
 func _attack() -> void:
+	
+	if(!can_shoot):
+		return
 	var camera = $"../.."  # Adjust this path to your camera node
 	var screen_center = get_viewport().size / 2
 
@@ -100,4 +104,8 @@ func _attack() -> void:
 	projectile.direction = direction
 
 	# Add the projectile to the scene
+	can_shoot = false
 	get_tree().current_scene.add_child(projectile)
+	await(get_tree().create_timer(60/WEAPON_TYPE.fire_rate)).timeout
+	print ('timer is finished')
+	can_shoot=true

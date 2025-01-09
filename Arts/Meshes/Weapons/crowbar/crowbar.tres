@@ -21,3 +21,4 @@ random_sway_amount = 5.0
 mesh = ExtResource("1_ju5yo")
 shadow = false
 damage_amount = 0.0
+fire_rate = 300.0

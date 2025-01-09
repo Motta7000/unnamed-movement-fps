@@ -123,7 +123,6 @@ far = 1000.0
 [node name="WeaponRig" type="Node3D" parent="CameraHolder/Camera3D"]
 
 [node name="Weapon" parent="CameraHolder/Camera3D/WeaponRig" instance=ExtResource("3_kgkij")]
-transform = Transform3D(-0.00823992, 0.0232633, 0.999695, 0.430446, 0.902448, -0.0174524, -0.902579, 0.430171, -0.0174497, 0.51, -0.37, -0.551)
 sway_noise = SubResource("NoiseTexture2D_5sm7k")
 sway_speed = 0.01
 reset = true
