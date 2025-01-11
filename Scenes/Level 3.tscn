@@ -38,6 +38,8 @@ radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km2eu"]
 albedo_texture = ExtResource("6_b5tu3")
+uv2_scale = Vector3(0.5, 0.5, 0.5)
+texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_octi2"]
 albedo_texture = ExtResource("7_qqtjr")
@@ -132,11 +134,19 @@ jumpBoostValue = 34.0
 collision_mask = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2159, -5.56546, 108.728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7159, -5.56546, 93.7277)
 material_override = SubResource("StandardMaterial3D_km2eu")
 use_collision = true
 collision_mask = 2
-size = Vector3(36, 1, 20)
+size = Vector3(43, 1, 50)
+material = SubResource("StandardMaterial3D_octi2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 22.2159, 10.9694, 86.9493)
+material_override = SubResource("StandardMaterial3D_km2eu")
+use_collision = true
+collision_mask = 2
+size = Vector3(36.4, 1, 32.1573)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="."]
@@ -172,16 +182,16 @@ size = Vector3(23, 19, 20)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="PistolEnemy" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 109.339)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 93.339)
 
 [node name="PistolEnemy2" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 102.785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 79.785)
 
 [node name="PistolEnemy3" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 116.488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93522, -3.33643, 85.0323)
 
 [node name="PistolEnemy4" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 106.046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 87.046)
 
 [connection signal="area_entered" from="Map/Jumppads/Jumppad/Area3D" to="Map/Jumppads/Jumppad" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="Map/Jumppads/Jumppad2/Area3D" to="Map/Jumppads/Jumppad2" method="_on_area_3d_area_entered"]

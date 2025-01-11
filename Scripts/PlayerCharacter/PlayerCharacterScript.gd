@@ -205,6 +205,13 @@ func _input(event):
 		if(event.is_action_pressed("attack")):
 			WEAPON_CONTROLLER._attack()
 			#WEAPON._attack()
+		if(event.is_action_pressed("toggleFullscreen")):
+			print(DisplayServer.window_get_mode())
+			if(DisplayServer.window_get_mode() == 3):
+				DisplayServer.window_set_mode(0)
+			elif(DisplayServer.window_get_mode() == 0):
+				DisplayServer.window_set_mode(3)
+			#WEAPON._attack()
 			
 func TakeDamage(damage: int) -> void:
 		health -= damage

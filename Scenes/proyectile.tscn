@@ -20,7 +20,7 @@ one_shot = true
 autostart = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(-0.299971, -0.00418863, 3.94887e-10, 4.46441e-05, -0.00319724, -0.299983, 0.00418839, -0.299954, 0.00319755, 0, -0.0155405, 0)
+transform = Transform3D(-0.999903, -0.0139621, 1.22573e-09, 0.000148814, -0.0106575, -0.999943, 0.0139613, -0.999846, 0.0106585, 0, -0.0155405, 0)
 collision_mask = 3855
 hit_from_inside = true
 collide_with_areas = true
