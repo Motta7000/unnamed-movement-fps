@@ -212,6 +212,8 @@ func _input(event):
 			elif(DisplayServer.window_get_mode() == 0):
 				DisplayServer.window_set_mode(3)
 			#WEAPON._attack()
+		if event.is_action_pressed("restartLevel"):  # Replace "ui_restart" 
+			get_tree().reload_current_scene()
 			
 func TakeDamage(damage: int) -> void:
 		health -= damage

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://be41te6ejgvkx"]
+
+[ext_resource type="Script" path="res://proyectile v2.gd" id="1_2ibds"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_puy8s"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dvsf5"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 7
+collision_mask = 65535
+script = ExtResource("1_2ibds")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0131071, -0.999914, 0, 0.999914, -0.0131071, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_puy8s")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, 0, 0)
+shape = SubResource("SphereShape3D_dvsf5")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

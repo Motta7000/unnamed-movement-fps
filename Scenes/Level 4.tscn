@@ -1,31 +1,31 @@
-[gd_scene load_steps=17 format=3 uid="uid://debd8xu3d0df4"]
+[gd_scene load_steps=17 format=3 uid="uid://dd754fex0yrdo"]
 
-[ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Scenes/PlayerCharacterScene.tscn" id="1_c4058"]
-[ext_resource type="Shader" path="res://Scenes/Level 1.gdshader" id="1_exyja"]
-[ext_resource type="Texture2D" uid="uid://dj1r7pr8raqsq" path="res://Arts/Enviroments/kloppenheim_06_puresky_4k.exr" id="2_7q688"]
-[ext_resource type="Texture2D" uid="uid://cosanfwg57e4y" path="res://Arts/Textures/kenney_prototype_textures/orange/texture_03.png" id="2_oxt14"]
-[ext_resource type="Script" path="res://Scripts/Others/JumppadScript.gd" id="3_eg3tk"]
-[ext_resource type="Texture2D" uid="uid://daq3d5pc7e2vt" path="res://Arts/Textures/kenney_prototype_textures/dark/texture_01.png" id="6_b5tu3"]
-[ext_resource type="Texture2D" uid="uid://bnslqr588f3vm" path="res://Arts/Textures/kenney_prototype_textures/light/texture_01.png" id="7_qqtjr"]
-[ext_resource type="PackedScene" uid="uid://cjvftuxpxlcm6" path="res://Scenes/Entities/PistolEnemy.tscn" id="8_ctn8a"]
+[ext_resource type="Shader" path="res://Scenes/Level 1.gdshader" id="1_skeq5"]
+[ext_resource type="Texture2D" uid="uid://18dxt256sbyj" path="res://Arts/Enviroments/autumn_field_puresky_4k.exr" id="2_5kqwc"]
+[ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Scenes/PlayerCharacterScene.tscn" id="3_8uy03"]
+[ext_resource type="Texture2D" uid="uid://cosanfwg57e4y" path="res://Arts/Textures/kenney_prototype_textures/orange/texture_03.png" id="4_1d02b"]
+[ext_resource type="Script" path="res://Scripts/Others/JumppadScript.gd" id="5_a36k0"]
+[ext_resource type="Texture2D" uid="uid://daq3d5pc7e2vt" path="res://Arts/Textures/kenney_prototype_textures/dark/texture_01.png" id="6_sb45f"]
+[ext_resource type="Texture2D" uid="uid://bnslqr588f3vm" path="res://Arts/Textures/kenney_prototype_textures/light/texture_01.png" id="7_rj816"]
+[ext_resource type="PackedScene" uid="uid://cjvftuxpxlcm6" path="res://Scenes/Entities/PistolEnemy.tscn" id="8_1qrsu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_diql4"]
-shader = ExtResource("1_exyja")
+shader = ExtResource("1_skeq5")
 shader_parameter/skyColor = Color(0.0991632, 0.498908, 0.742816, 1)
 shader_parameter/horizonColor = Color(0, 0, 0, 1)
-shader_parameter/skyTexture = ExtResource("2_7q688")
+shader_parameter/skyTexture = ExtResource("2_5kqwc")
 
 [sub_resource type="Sky" id="Sky_k22k6"]
 sky_material = SubResource("ShaderMaterial_diql4")
 
 [sub_resource type="Environment" id="Environment_hw7w3"]
 background_mode = 2
-background_energy_multiplier = 0.18
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_k22k6")
 ambient_light_sky_contribution = 0.37
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3yst"]
-albedo_texture = ExtResource("2_oxt14")
+albedo_texture = ExtResource("4_1d02b")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -38,12 +38,12 @@ height = 0.15
 radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km2eu"]
-albedo_texture = ExtResource("6_b5tu3")
+albedo_texture = ExtResource("6_sb45f")
 uv2_scale = Vector3(0.5, 0.5, 0.5)
 texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_octi2"]
-albedo_texture = ExtResource("7_qqtjr")
+albedo_texture = ExtResource("7_rj816")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -61,36 +61,82 @@ shadow_opacity = 0.77
 
 [node name="PlayerCharacter" type="Node3D" parent="."]
 
-[node name="PlayerCharacterV2" parent="PlayerCharacter" instance=ExtResource("1_c4058")]
+[node name="PlayerCharacterV2" parent="PlayerCharacter" instance=ExtResource("3_8uy03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5662, -3.2069, 109.982)
 
 [node name="Map" type="Node3D" parent="."]
 
 [node name="WalkableWalls" type="Node3D" parent="Map"]
 
-[node name="WalkableWall2" type="CSGBox3D" parent="Map/WalkableWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.247, -0.11439, 99.171)
-material_override = SubResource("StandardMaterial3D_h3yst")
-use_collision = true
-collision_layer = 5
-collision_mask = 2
-size = Vector3(67.6, 10, 1)
-
 [node name="WalkableWall4" type="CSGBox3D" parent="Map/WalkableWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6058, -0.11439, 118.171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6058, -0.11439, 118.171)
 material_override = SubResource("StandardMaterial3D_h3yst")
 use_collision = true
 collision_layer = 5
 collision_mask = 2
-size = Vector3(55, 10, 1)
+size = Vector3(47, 10, 1)
 
-[node name="WalkableWall3" type="CSGBox3D" parent="Map/WalkableWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -176.947, -0.11439, 118.171)
+[node name="WalkableWall5" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.3942, 9.88561, 95.171)
 material_override = SubResource("StandardMaterial3D_h3yst")
 use_collision = true
 collision_layer = 5
 collision_mask = 2
-size = Vector3(103, 10, 1)
+size = Vector3(47, 10, 1)
+
+[node name="WalkableWall6" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.6058, 19.8856, 71.171)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(47, 10, 1)
+
+[node name="WalkableWall7" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.6058, 29.8856, 89.671)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(38, 10, 1)
+
+[node name="WalkableWall8" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6058, 42.8856, 117.671)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(34, 10, 1)
+
+[node name="WalkableWall9" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.3942, 56.8856, 89.671)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(34, 10, 1)
+
+[node name="WalkableWall10" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.6058, 72.8856, 71.671)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(34, 10, 1)
+
+[node name="WalkableWall11" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 92.6058, 78.8856, 71.671)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(34, 10, 1)
+
+[node name="PistolEnemy" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 71, 137)
+
+[node name="PistolEnemy2" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 71, 137)
 
 [node name="Blocks" type="Node3D" parent="Map"]
 
@@ -104,7 +150,7 @@ use_collision = true
 collision_mask = 2
 radius = 2.0
 height = 0.15
-script = ExtResource("3_eg3tk")
+script = ExtResource("5_a36k0")
 jumpBoostValue = 22.0
 
 [node name="Area3D" type="Area3D" parent="Map/Jumppads/Jumppad"]
@@ -124,7 +170,7 @@ use_collision = true
 collision_mask = 2
 radius = 2.0
 height = 0.15
-script = ExtResource("3_eg3tk")
+script = ExtResource("5_a36k0")
 jumpBoostValue = 34.0
 
 [node name="Area3D" type="Area3D" parent="Map/Jumppads/Jumppad2"]
@@ -139,7 +185,7 @@ use_collision = true
 collision_mask = 2
 radius = 2.0
 height = 0.15
-script = ExtResource("3_eg3tk")
+script = ExtResource("5_a36k0")
 jumpBoostValue = 34.0
 
 [node name="Area3D" type="Area3D" parent="Map/Jumppads/Jumppad4"]
@@ -147,72 +193,28 @@ visible = false
 collision_mask = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2159, -5.56546, 93.7277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6622, -5.56546, 93.7277)
 material_override = SubResource("StandardMaterial3D_km2eu")
 use_collision = true
 collision_mask = 2
-size = Vector3(64, 1, 50)
+size = Vector3(47.1074, 1, 50)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 22.2159, 10.9694, 86.9493)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.6085, 67.4345, 89.7277)
 material_override = SubResource("StandardMaterial3D_km2eu")
 use_collision = true
 collision_mask = 2
-size = Vector3(36.4, 1, 32.1573)
+size = Vector3(33, 1, 38)
 material = SubResource("StandardMaterial3D_octi2")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.4159, -4.10925, 89.9493)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.331, 67.4345, 140.62)
 material_override = SubResource("StandardMaterial3D_km2eu")
 use_collision = true
 collision_mask = 2
-size = Vector3(18, 1, 2)
+size = Vector3(27.5542, 1, 15.7847)
 material = SubResource("StandardMaterial3D_octi2")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4595, -5.56546, 108.728)
-material_override = SubResource("StandardMaterial3D_km2eu")
-use_collision = true
-collision_mask = 2
-size = Vector3(22, 1, 20)
-material = SubResource("StandardMaterial3D_octi2")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -270.96, -5.56546, 108.728)
-material_override = SubResource("StandardMaterial3D_km2eu")
-use_collision = true
-collision_mask = 2
-size = Vector3(85, 1, 20)
-material = SubResource("StandardMaterial3D_octi2")
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -300.96, -5.56546, 139.728)
-material_override = SubResource("StandardMaterial3D_km2eu")
-use_collision = true
-collision_mask = 2
-size = Vector3(25, 1, 42)
-material = SubResource("StandardMaterial3D_octi2")
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.96, 5.98488, 108.728)
-material_override = SubResource("StandardMaterial3D_km2eu")
-use_collision = true
-collision_mask = 2
-size = Vector3(23, 19, 20)
-material = SubResource("StandardMaterial3D_octi2")
-
-[node name="PistolEnemy" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 93.339)
-
-[node name="PistolEnemy2" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 79.785)
-
-[node name="PistolEnemy3" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93522, -3.33643, 85.0323)
-
-[node name="PistolEnemy4" parent="." instance=ExtResource("8_ctn8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93522, -3.33643, 87.046)
 
 [connection signal="area_entered" from="Map/Jumppads/Jumppad/Area3D" to="Map/Jumppads/Jumppad" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="Map/Jumppads/Jumppad2/Area3D" to="Map/Jumppads/Jumppad2" method="_on_area_3d_area_entered"]

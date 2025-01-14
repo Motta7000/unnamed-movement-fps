@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c7ahy47n06rhg"]
 
 [ext_resource type="Shader" path="res://Scenes/Level 1.gdshader" id="1_tb0vl"]
-[ext_resource type="Texture2D" uid="uid://c80f5r5j0bycv" path="res://Arts/Enviroments/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_37gii"]
+[ext_resource type="Texture2D" uid="uid://dpacyqkoraqf3" path="res://Arts/Enviroments/overcast_soil_puresky_4k.exr" id="2_3qqy2"]
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Scenes/PlayerCharacterScene.tscn" id="3_y5ham"]
 [ext_resource type="Script" path="res://Scripts/Others/JumppadScript.gd" id="5_qf2vy"]
 [ext_resource type="Texture2D" uid="uid://daq3d5pc7e2vt" path="res://Arts/Textures/kenney_prototype_textures/dark/texture_01.png" id="6_wojv3"]
@@ -12,13 +12,14 @@
 shader = ExtResource("1_tb0vl")
 shader_parameter/skyColor = Color(0.0991632, 0.498908, 0.742816, 1)
 shader_parameter/horizonColor = Color(0, 0, 0, 1)
-shader_parameter/skyTexture = ExtResource("2_37gii")
+shader_parameter/skyTexture = ExtResource("2_3qqy2")
 
 [sub_resource type="Sky" id="Sky_k22k6"]
 sky_material = SubResource("ShaderMaterial_diql4")
 
 [sub_resource type="Environment" id="Environment_hw7w3"]
 background_mode = 2
+background_energy_multiplier = 0.59
 sky = SubResource("Sky_k22k6")
 ambient_light_sky_contribution = 0.37
 

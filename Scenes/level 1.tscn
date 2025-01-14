@@ -1,11 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://oj3blpxqf1bl"]
+[gd_scene load_steps=27 format=3 uid="uid://oj3blpxqf1bl"]
 
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Scenes/PlayerCharacterScene.tscn" id="1_tvhlt"]
 [ext_resource type="Texture2D" uid="uid://c80f5r5j0bycv" path="res://Arts/Enviroments/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_ei6qb"]
 [ext_resource type="Texture2D" uid="uid://cosanfwg57e4y" path="res://Arts/Textures/kenney_prototype_textures/orange/texture_03.png" id="2_v37ox"]
 [ext_resource type="Texture2D" uid="uid://daq3d5pc7e2vt" path="res://Arts/Textures/kenney_prototype_textures/dark/texture_01.png" id="4_1dpaj"]
 [ext_resource type="Script" path="res://Scripts/Others/JumppadScript.gd" id="4_nyumb"]
-[ext_resource type="PackedScene" uid="uid://cjvftuxpxlcm6" path="res://Scenes/Entities/PistolEnemy.tscn" id="5_y2cgy"]
 [ext_resource type="Texture2D" uid="uid://bnslqr588f3vm" path="res://Arts/Textures/kenney_prototype_textures/light/texture_01.png" id="5_yusv5"]
 [ext_resource type="Shader" path="res://Scenes/Level 1.gdshader" id="7_o5kih"]
 
@@ -20,6 +19,7 @@ sky_material = SubResource("ShaderMaterial_diql4")
 
 [sub_resource type="Environment" id="Environment_hw7w3"]
 background_mode = 2
+background_energy_multiplier = 0.9
 sky = SubResource("Sky_k22k6")
 ambient_light_sky_contribution = 0.37
 
@@ -230,9 +230,6 @@ use_collision = true
 collision_mask = 2
 size = Vector3(36, 1, 20)
 material = SubResource("StandardMaterial3D_octi2")
-
-[node name="PistolEnemy" parent="." instance=ExtResource("5_y2cgy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -305.207, -3.33643, 141.186)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2159, -0.0654449, 99.2384)

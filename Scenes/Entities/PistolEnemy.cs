@@ -42,7 +42,8 @@ public override void _Ready()
 	SetProcess(true); // For regular frame updates
 
 	// Set up the timer for shooting
-	_shootTimer.WaitTime = ShootingInterval;
+	Random random = new Random();
+	_shootTimer.WaitTime = ShootingInterval * (1.0 + (random.NextDouble() * 0.2 - 0.1));
 	_shootTimer.Autostart = true;
 	_shootTimer.Timeout += Shoot; // Connect the timer timeout to the shoot function
 }
