@@ -132,11 +132,39 @@ collision_layer = 5
 collision_mask = 2
 size = Vector3(34, 10, 1)
 
+[node name="WalkableWall12" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 213.606, 78.8856, 110.671)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(34, 10, 1)
+
+[node name="WalkableWall13" type="CSGBox3D" parent="Map/WalkableWalls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 345.606, 78.8856, 60.671)
+material_override = SubResource("StandardMaterial3D_h3yst")
+use_collision = true
+collision_layer = 5
+collision_mask = 2
+size = Vector3(34, 10, 1)
+
 [node name="PistolEnemy" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 71, 137)
 
+[node name="PistolEnemy5" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 71, 94)
+
+[node name="PistolEnemy6" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 71, 81)
+
 [node name="PistolEnemy2" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 71, 137)
+
+[node name="PistolEnemy3" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 71, 23)
+
+[node name="PistolEnemy4" parent="Map/WalkableWalls" instance=ExtResource("8_1qrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 71, 23)
 
 [node name="Blocks" type="Node3D" parent="Map"]
 
@@ -208,8 +236,40 @@ collision_mask = 2
 size = Vector3(33, 1, 38)
 material = SubResource("StandardMaterial3D_octi2")
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.609, 67.4345, 89.7277)
+material_override = SubResource("StandardMaterial3D_km2eu")
+use_collision = true
+collision_mask = 2
+size = Vector3(33, 1, 38)
+material = SubResource("StandardMaterial3D_octi2")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 277.609, 67.4345, 89.7277)
+material_override = SubResource("StandardMaterial3D_km2eu")
+use_collision = true
+collision_mask = 2
+size = Vector3(33, 1, 38)
+material = SubResource("StandardMaterial3D_octi2")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 406.609, 67.4345, 89.7277)
+material_override = SubResource("StandardMaterial3D_km2eu")
+use_collision = true
+collision_mask = 2
+size = Vector3(33, 1, 38)
+material = SubResource("StandardMaterial3D_octi2")
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.331, 67.4345, 140.62)
+material_override = SubResource("StandardMaterial3D_km2eu")
+use_collision = true
+collision_mask = 2
+size = Vector3(27.5542, 1, 15.7847)
+material = SubResource("StandardMaterial3D_octi2")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.331, 67.4345, 26.62)
 material_override = SubResource("StandardMaterial3D_km2eu")
 use_collision = true
 collision_mask = 2

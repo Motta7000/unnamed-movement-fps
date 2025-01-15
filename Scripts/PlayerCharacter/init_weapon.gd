@@ -96,12 +96,12 @@ func _attack() -> void:
 	var spawn_position = from + direction * 1.5  # Adjust the multiplier to control spawn distance
 
 	# Instance the projectile
-	var projectile_scene = preload("res://Scenes/proyectile.tscn")
+	var projectile_scene = preload("res://Scenes/proyectile v2.tscn")
 	var projectile = projectile_scene.instantiate()
 
 	# Set the position and direction of the projectile
-	projectile.global_transform.origin = spawn_position
-	projectile.direction = direction
+	projectile.global_transform = camera.global_transform
+	#projectile.direction = direction
 
 	# Add the projectile to the scene
 	can_shoot = false
