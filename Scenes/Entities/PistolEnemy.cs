@@ -68,17 +68,31 @@ public override void _Ready()
 
 		// Instance the projectile and add it to the scene
 		Node projectileInstance = ProjectileScene.Instantiate();
-		GetParent().AddChild(projectileInstance);
+
 
 		// Position and orient the projectile
-		if (projectileInstance is RigidBody3D projectile)
+		if (projectileInstance is RayCast3D projectile)
 		{
+			
 			// Calculate direction towards the player
 			Vector3 direction = (_player.GlobalTransform.Origin - _gunBarrel.GlobalTransform.Origin).Normalized();
 			// Position the projectile at the gun barrel
-			projectile.GlobalTransform = _gunBarrel.GlobalTransform.Translated(direction * 1.5f);
+			//projectile.GlobalTransform = _gunBarrel.GlobalTransform.Translated(direction * 1.5f);
+			GD.Print(direction);
+			GD.Print(_gunBarrel.GlobalTransform);
+			_gunBarrel.LookAt(_player.GlobalTransform.Origin);
+			//_gunBarrel.GlobalRotation = direction;
+			projectile.GlobalTransform = _gunBarrel.GlobalTransform;
 			// Set the projectile's velocity
-			projectile.LinearVelocity = direction * ProjectileSpeed;
+			GD.Print("Player position:");
+			GD.Print(_player.GlobalTransform.Origin);
+			projectile.LookAt(_player.GlobalTransform.Origin);
+			projectile.TargetPosition =_player.GlobalTransform.Origin;
+			GD.Print("TargetPosition:",projectile.TargetPosition);
+			GetParent().AddChild(projectile);
+			//projectile.LinearVelocity = direction * ProjectileSpeed;
+			//projectile.GlobalTransform.origin = direction * ProjectileSpeed;
+			
 		}
 	}
 

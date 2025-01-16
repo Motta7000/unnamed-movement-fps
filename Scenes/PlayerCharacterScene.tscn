@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwggrf7sbmkcv"]
+[gd_scene load_steps=20 format=3 uid="uid://bwggrf7sbmkcv"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/PlayerCharacterScript.gd" id="1_5dbx1"]
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/CameraScript.gd" id="2_x12n0"]
 [ext_resource type="PackedScene" uid="uid://yyl12d1xcg4d" path="res://Arts/Meshes/Weapons/weapon.tscn" id="3_kgkij"]
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/HUDScript.gd" id="3_l04tv"]
+[ext_resource type="Resource" uid="uid://8mj6pecne5gs" path="res://Arts/Meshes/Weapons/crowbar/crowbar.tres" id="4_6213o"]
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/HUDRedimensionmentScript.gd" id="5_jgfg0"]
 [ext_resource type="Script" path="res://Scenes/sub_viewport.gd" id="7_j2me4"]
 [ext_resource type="Script" path="res://Scenes/camera_3d.gd" id="8_o07ga"]
@@ -124,6 +125,7 @@ far = 1000.0
 
 [node name="Weapon" parent="CameraHolder/Camera3D/WeaponRig" instance=ExtResource("3_kgkij")]
 transform = Transform3D(-0.00823992, 0.0232633, 0.999695, 0.430446, 0.902448, -0.0174524, -0.902579, 0.430171, -0.0174497, 0.51, -0.37, -0.551)
+WEAPON_TYPE = ExtResource("4_6213o")
 sway_noise = SubResource("NoiseTexture2D_5sm7k")
 sway_speed = 0.01
 reset = true

@@ -21,3 +21,7 @@ random_sway_amount = 5.0
 mesh = ExtResource("1_bnyud")
 shadow = false
 damage_amount = 0.0
+fire_rate = 1.0
+mag_size = 0
+reload_time = 0.0
+ammo = 0

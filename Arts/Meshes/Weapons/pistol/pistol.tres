@@ -19,3 +19,7 @@ idle_sway_rotation_strength = 300.0
 random_sway_amount = 5.0
 shadow = false
 damage_amount = 0.0
+fire_rate = 1.0
+mag_size = 12
+reload_time = 3.0
+ammo = 24

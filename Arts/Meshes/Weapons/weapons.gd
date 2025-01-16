@@ -20,3 +20,6 @@ class_name Weapons extends Resource
 @export var shadow : bool
 @export var damage_amount : float
 @export var fire_rate : float = 1
+@export var mag_size : int
+@export var reload_time : float
+@export var ammo : int

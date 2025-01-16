@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://proyectile.gd" id="1_q6b5y"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_puy8s"]
-radius = 0.05
-height = 0.1
+radius = 0.1
+height = 0.2
 
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_mask = 65535
@@ -20,7 +20,6 @@ one_shot = true
 autostart = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(-0.999903, -0.0139621, 1.22573e-09, 0.000148814, -0.0106575, -0.999943, 0.0139613, -0.999846, 0.0106585, 0, -0.0155405, 0)
 collision_mask = 3855
 hit_from_inside = true
 collide_with_areas = true

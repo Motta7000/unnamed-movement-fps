@@ -13,6 +13,7 @@ class_name WeaponController extends Node3D
 @export var reset : bool = false
 @onready var weapon_mesh : MeshInstance3D = %WeaponMesh
 @onready var weapon_shadow : MeshInstance3D = %WeaponShadow
+@onready var current_ammo_in_mag : int = WEAPON_TYPE.mag_size
 # Called when the node enters the scene tree for the first time.
 var mouse_movement : Vector2
 var random_sway_x
@@ -83,7 +84,7 @@ func get_sway_noise() -> float:
 	
 func _attack() -> void:
 	
-	if(!can_shoot):
+	if(!can_shoot): #|| current_ammo_in_mag <= 0 || ):
 		return
 	var camera = $"../.."  # Adjust this path to your camera node
 	var screen_center = get_viewport().size / 2
