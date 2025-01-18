@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://yi7u23f5ww08"]
+
+[ext_resource type="Shader" path="res://Scenes/Level 1.gdshader" id="1_0e85e"]
+[ext_resource type="Texture2D" uid="uid://dj1r7pr8raqsq" path="res://Arts/Enviroments/kloppenheim_06_puresky_4k.exr" id="2_e6i35"]
+[ext_resource type="Script" path="res://Scripts/Others/MainMenuCamera3d.cs" id="3_cjip2"]
+[ext_resource type="FontVariation" uid="uid://bu312ttk5j7ju" path="res://Arts/Materials/Anklada_Novaz_regular_font.tres" id="4_44vmx"]
+[ext_resource type="Script" path="res://Scenes/MainMenu.cs" id="5_7ubt1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_peqe6"]
+shader = ExtResource("1_0e85e")
+shader_parameter/skyColor = Color(0.0991632, 0.498908, 0.742816, 1)
+shader_parameter/horizonColor = Color(0, 0, 0, 1)
+shader_parameter/skyTexture = ExtResource("2_e6i35")
+
+[sub_resource type="Sky" id="Sky_k22k6"]
+sky_material = SubResource("ShaderMaterial_peqe6")
+
+[sub_resource type="Environment" id="Environment_uyx8s"]
+background_mode = 2
+background_energy_multiplier = 0.18
+sky = SubResource("Sky_k22k6")
+ambient_light_sky_contribution = 0.37
+
+[sub_resource type="Theme" id="Theme_op4vq"]
+default_font = ExtResource("4_44vmx")
+
+[node name="Node" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_uyx8s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D/WorldEnvironment"]
+transform = Transform3D(0.258819, 0.848808, -0.461018, -0.683013, 0.498311, 0.534022, 0.683013, 0.176666, 0.708719, -282, 243, 32)
+light_energy = 2.789
+shadow_enabled = true
+shadow_opacity = 0.77
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+process_mode = 3
+script = ExtResource("3_cjip2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_op4vq")
+script = ExtResource("5_7ubt1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.635
+offset_top = -147.625
+offset_right = 95.635
+offset_bottom = -46.625
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.1
+offset_top = -39.68
+offset_right = 325.1
+offset_bottom = -16.68
+grow_vertical = 0
+text = "Unnamed Movement Shooter"
+fit_content = true
+
+[connection signal="pressed" from="Control/VBoxContainer/StartButton" to="Control" method="OnStartButtonPressed"]
+[connection signal="pressed" from="Control/VBoxContainer/QuitButton" to="Control" method="OnExitButtonPressed"]

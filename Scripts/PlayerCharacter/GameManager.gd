@@ -18,8 +18,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	pass
-
+func _input(event: InputEvent) -> void:
+	if(event.is_action_pressed("toggleFullscreen")):
+			print(DisplayServer.window_get_mode())
+			if(DisplayServer.window_get_mode() == 3):
+				DisplayServer.window_set_mode(0)
+			elif(DisplayServer.window_get_mode() == 0):
+				DisplayServer.window_set_mode(3)
+				
 func enemy_game_ended() -> void:
 	# Add 3 seconds to the slow-motion timer
 	#slow_motion_timer.wait_time += 3.0

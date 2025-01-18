@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwggrf7sbmkcv"]
+[gd_scene load_steps=22 format=3 uid="uid://bwggrf7sbmkcv"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/PlayerCharacterScript.gd" id="1_5dbx1"]
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/CameraScript.gd" id="2_x12n0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/HUDScript.gd" id="3_l04tv"]
 [ext_resource type="Resource" uid="uid://8mj6pecne5gs" path="res://Arts/Meshes/Weapons/crowbar/crowbar.tres" id="4_6213o"]
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter/HUDRedimensionmentScript.gd" id="5_jgfg0"]
+[ext_resource type="FontFile" uid="uid://d7satin73r3y" path="res://Arts/Fonts/Anklada Novaz regular.ttf" id="5_xv114"]
 [ext_resource type="Script" path="res://Scenes/sub_viewport.gd" id="7_j2me4"]
 [ext_resource type="Script" path="res://Scenes/camera_3d.gd" id="8_o07ga"]
 [ext_resource type="Shader" path="res://Arts/Shaders/SpeedLinesShader.gdshader" id="12_8u6b8"]
@@ -30,6 +31,9 @@ noise = SubResource("FastNoiseLite_ulxq6")
 albedo_color = Color(0.196078, 0.223529, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p2iaj"]
+
+[sub_resource type="Theme" id="Theme_yuxo6"]
+default_font = ExtResource("5_xv114")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cdisy"]
 frequency = 0.15
@@ -160,6 +164,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
+theme = SubResource("Theme_yuxo6")
 script = ExtResource("3_l04tv")
 metadata/_edit_use_anchors_ = true
 
