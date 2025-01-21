@@ -10,7 +10,6 @@ public partial class MainMenuCamera3d  : Camera3D
     }
     public override void _Process(double delta)
     {
-        GD.Print(Mathf.DegToRad(rotationSpeed * (float)delta));
         RotateY(Mathf.DegToRad(rotationSpeed * (float)delta));
     }
 }

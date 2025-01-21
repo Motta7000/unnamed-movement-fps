@@ -15,3 +15,59 @@ data_*/
 mono_crash.*.json
 
 *.tmp
+
+# Godot-specific ignores
+.import/
+.export/
+*.import
+*.import.cfg
+*.godot
+*.godot.import
+
+# Ignore the .mono directory (if using C#)
+.mono/
+
+# Ignore the .vs directory (if using Visual Studio)
+.vs/
+
+# Ignore the .vscode directory (if using Visual Studio Code)
+.vscode/
+
+# Ignore compiled files
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+*.pyc
+*.pyo
+*.pyd
+*.o
+*.obj
+*.a
+*.lib
+*.ncb
+*.sdf
+*.suo
+*.pdb
+*.idb
+*.DS_Store
+*.swp
+*.lock
+*.log
+*.tmp
+*.bak
+*.old
+*.orig
+*.rej
+*.sublime-project
+*.sublime-workspace
+
+# Ignore the Godot export templates directory
+export_templates/
+
+# Ignore the Godot cache directory
+.cache/
+
+# Ignore the Godot build directory
+build/

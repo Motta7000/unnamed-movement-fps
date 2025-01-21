@@ -22,3 +22,6 @@ mesh = ExtResource("1_ju5yo")
 shadow = false
 damage_amount = 0.0
 fire_rate = 300.0
+mag_size = 0
+reload_time = 0.0
+ammo = 0

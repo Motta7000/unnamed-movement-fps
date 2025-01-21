@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://yi7u23f5ww08"]
+[gd_scene load_steps=9 format=3 uid="uid://yi7u23f5ww08"]
 
 [ext_resource type="Shader" path="res://Scenes/Level 1.gdshader" id="1_0e85e"]
 [ext_resource type="Texture2D" uid="uid://dj1r7pr8raqsq" path="res://Arts/Enviroments/kloppenheim_06_puresky_4k.exr" id="2_e6i35"]
 [ext_resource type="Script" path="res://Scripts/Others/MainMenuCamera3d.cs" id="3_cjip2"]
-[ext_resource type="FontVariation" uid="uid://bu312ttk5j7ju" path="res://Arts/Materials/Anklada_Novaz_regular_font.tres" id="4_44vmx"]
 [ext_resource type="Script" path="res://Scenes/MainMenu.cs" id="5_7ubt1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_peqe6"]
@@ -22,7 +21,6 @@ sky = SubResource("Sky_k22k6")
 ambient_light_sky_contribution = 0.37
 
 [sub_resource type="Theme" id="Theme_op4vq"]
-default_font = ExtResource("4_44vmx")
 
 [node name="Node" type="Node3D"]
 

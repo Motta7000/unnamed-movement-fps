@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://c7gepa5oswmbp"]
+
+[ext_resource type="Script" path="res://Arts/Meshes/Weapons/weapons.gd" id="1_v4e4n"]
+[ext_resource type="PackedScene" uid="uid://bifuhp8k7j5ac" path="res://Arts/Meshes/Weapons/pistol_2/mark_23__animated__free.glb" id="2_u8dqp"]
+
+[resource]
+script = ExtResource("1_v4e4n")
+name = &""
+position = Vector3(0, -1.571, -0.224)
+rotation = Vector3(0, -3.12077, 0)
+scale = Vector3(0.01, 0.01, 0.01)
+sway_min = Vector2(-20, -20)
+sway_max = Vector2(20, 20)
+sway_speed_position = 0.07
+sway_speed_rotation = 0.1
+sway_amount_position = 0.1
+sway_amount_rotation = 30.0
+idle_sway_adjustment = 10.0
+idle_sway_rotation_strength = 300.0
+random_sway_amount = 5.0
+shadow = false
+damage_amount = 0.0
+fire_rate = 100.0
+mag_size = 0
+reload_time = 0.0
+ammo = 0
+view_model = ExtResource("2_u8dqp")

@@ -317,6 +317,13 @@ collision_mask = 2
 size = Vector3(1, 10, 19)
 material = SubResource("StandardMaterial3D_octi2")
 
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -299, -4, 130)
+
+[node name="Area3D" type="Area3D" parent="CSGCylinder3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCylinder3D/Area3D"]
+
 [connection signal="area_entered" from="Map/Jumppads/Jumppad/Area3D" to="Map/Jumppads/Jumppad" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="Map/Jumppads/Jumppad2/Area3D" to="Map/Jumppads/Jumppad2" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="Map/Jumppads/Jumppad4/Area3D" to="Map/Jumppads/Jumppad4" method="_on_area_3d_area_entered"]

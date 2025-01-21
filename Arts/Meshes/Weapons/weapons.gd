@@ -23,3 +23,5 @@ class_name Weapons extends Resource
 @export var mag_size : int
 @export var reload_time : float
 @export var ammo : int
+@export var view_model : PackedScene
+@export var world_model : PackedScene
