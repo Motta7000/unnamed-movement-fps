@@ -18,9 +18,10 @@ class_name Weapons extends Resource
 @export_category("Visual Settings")
 @export var mesh : Mesh
 @export var shadow : bool
-@export var damage_amount : float
 @export var fire_rate : float = 1
-@export var mag_size : int
+@export var mag_size : int = 12
+@export var current_ammo_in_mag : int = mag_size
+@export var type : StringName = "Pistol"
 @export var reload_time : float
 @export var ammo : int
 @export var view_model : PackedScene

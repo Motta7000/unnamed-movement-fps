@@ -55,7 +55,6 @@ func _process(delta) -> void:
 	var arrays = trail_mesh.surface_get_arrays(0)
 	if  trail_mesh.get_surface_count() > 0:
 		var vertices = arrays[Mesh.ARRAY_VERTEX]
-		print("Vertex Data:",vertices)
 	# Add the new positions (current and last)
 		vertices.append(global_transform.origin)
 		vertices.append(last_position)
