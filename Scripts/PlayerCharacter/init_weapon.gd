@@ -1,3 +1,4 @@
+#init_weapon.gd
 @tool
 
 class_name WeaponController extends Node3D
@@ -8,6 +9,7 @@ class_name WeaponController extends Node3D
 		if Engine.is_editor_hint():
 			load_weapon()
 
+@export var hud: HUD
 @export var sway_noise: NoiseTexture2D
 @export var sway_speed: float = 1.2
 @export var reset: bool = false
@@ -54,6 +56,7 @@ func update_weapon_model() -> void:
 func _ready() -> void:
 	update_weapon_model()
 	load_weapon()
+	#update_ammo_display()
 
 func load_weapon() -> void:
 	weapon_mesh.mesh = WEAPON_TYPE.mesh
@@ -110,7 +113,10 @@ func get_sway_noise() -> float:
 		player_position = GameManager.lastFramePosition
 	var noise_location: float = sway_noise.noise.get_noise_2d(player_position.x, player_position.y)
 	return noise_location
-	
+func update_ammo_display():
+	if hud && WEAPON_TYPE.type == 'Pistol': 
+		hud.displayAmmo(WEAPON_TYPE.current_ammo_in_mag, pistol_ammo)
+
 func _attack() -> void:
 	
 	if (!can_shoot || state == 'Reloading'):
@@ -141,9 +147,9 @@ func _attack() -> void:
 	can_shoot = false
 	play_anim("Shoot")
 	WEAPON_TYPE.current_ammo_in_mag -= 1
+	update_ammo_display()
 	get_tree().current_scene.add_child(projectile)
 	await (get_tree().create_timer(60 / WEAPON_TYPE.fire_rate)).timeout
-	print('timer is finished')
 	can_shoot = true
 
 func play_anim(name: String, animation_speed: float = -1.0):
@@ -160,13 +166,16 @@ func play_anim(name: String, animation_speed: float = -1.0):
 		anim_player.play(name)
 
 func reload():
+	if(state == 'Reloading'):
+		return
 	state = 'Reloading'
+	if pistol_ammo == 0:
+		return
 	play_anim('Reload',WEAPON_TYPE.reload_time)
-	await (get_tree().create_timer(WEAPON_TYPE.reload_time)).timeout
-
 	var ammo_needed = WEAPON_TYPE.mag_size - WEAPON_TYPE.current_ammo_in_mag
-
+	await (get_tree().create_timer(WEAPON_TYPE.reload_time)).timeout
 	if WEAPON_TYPE.type == "Pistol":
+
 		if pistol_ammo >= ammo_needed:
 			WEAPON_TYPE.current_ammo_in_mag += ammo_needed
 			pistol_ammo -= ammo_needed
@@ -174,6 +183,8 @@ func reload():
 			WEAPON_TYPE.current_ammo_in_mag += pistol_ammo
 			pistol_ammo = 0
 	elif WEAPON_TYPE.type == "Shotgun":
+		if shotgun_ammo == 0:
+			return
 		if shotgun_ammo >= ammo_needed:
 			WEAPON_TYPE.current_ammo_in_mag += ammo_needed
 			shotgun_ammo -= ammo_needed
@@ -181,6 +192,8 @@ func reload():
 			WEAPON_TYPE.current_ammo_in_mag += shotgun_ammo
 			shotgun_ammo = 0
 	elif WEAPON_TYPE.type == "Rifle":
+		if rifle_ammo == 0:
+			return
 		if rifle_ammo >= ammo_needed:
 			WEAPON_TYPE.current_ammo_in_mag += ammo_needed
 			rifle_ammo -= ammo_needed
@@ -190,4 +203,5 @@ func reload():
 	else:
 		WEAPON_TYPE.current_ammo_in_mag = WEAPON_TYPE.mag_size
 	state = 'Idle'
+	update_ammo_display()
 	print("Reloaded! Current ammo in mag: %d" % WEAPON_TYPE.current_ammo_in_mag)

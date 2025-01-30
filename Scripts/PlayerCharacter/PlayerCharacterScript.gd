@@ -209,7 +209,8 @@ func _input(event):
 			#WEAPON._attack()
 		if event.is_action_pressed("restartLevel"):  # Replace "ui_restart" 
 			get_tree().reload_current_scene()
-			
+		if event.is_action_pressed("reload"):  # Replace "ui_restart" 
+			WEAPON_CONTROLLER.reload()
 func TakeDamage(damage: int) -> void:
 		health -= damage
 		print("Player took damage:", damage, "Remaining health:", health)

@@ -1,3 +1,4 @@
+#HUDScript.gd:
 extends Control
 
 #class name
@@ -11,9 +12,11 @@ class_name HUD
 @onready var framesPerSecondLabelText = $HBoxContainer/VBoxContainer2/FramesPerSecondLabelText
 @onready var nbJumpsAllowedInAirLabelText = $HBoxContainer/VBoxContainer2/NbJumpsInAirLabelText
 @onready var speedLinesContainer = $SpeedLinesContrainer
+@onready var ammoLabelText = $Ammo
 
 func _ready():
 	speedLinesContainer.visible = false #the speed lines will only be displayed when the character will dashing
+	#ammoLabelText.set_text('hola')
 
 func displayCurrentState(currentState):
 	#this function manage the current state displayment
@@ -68,3 +71,6 @@ func displaySpeedLines(dashTime):
 func _process(_delta):
 	#this function manage the frames per second displayment
 	framesPerSecondLabelText.set_text(str(Engine.get_frames_per_second()))
+
+func displayAmmo(current_ammo: int, max_ammo:int):
+	ammoLabelText.set_text(str(current_ammo) + "/" + str(max_ammo))
